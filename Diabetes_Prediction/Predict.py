@@ -5,11 +5,15 @@ import json
 
 def predict(inputdata):
 
-    # Get previous data
-    prevfile = 'Previous.txt'
-    with open (prevfile, 'r') as f:
-        lines = f.read()
-    previous = dict(json.loads(lines))
+
+
+    previous = {
+                "AdaBoostClassifier": 0,
+                "DecisionTreeClassifier": 0,
+                "LogisticRegression": 0,
+                "RandomForestClassifier": 0,
+                "XGBClassifier": 0
+                }
 
     #Transform inputdata to an inputdataframe
     data = pd.DataFrame(inputdata, index=[1])
@@ -101,11 +105,6 @@ def predict(inputdata):
         yProbFinal = int(yProb_[0])
         results[name] = yProbFinal
         deltas[name] = yProbFinal - int(previous[name])
-
-    json_object = json.dumps(results, indent=4)
-
-    # Rewrite previous measures
-    with open (prevfile, 'w') as f:
-        f.write(json_object)
+        previous[name] = yProbFinal
 
     return results, deltas

@@ -112,6 +112,13 @@ st.write("#")
 ##################
 c1, c2, c3, c4 = st.columns(4)
 
+previous = {
+    "AdaBoostClassifier": 51,
+    "DecisionTreeClassifier": 68,
+    "LogisticRegression": 66,
+    "RandomForestClassifier": 73,
+    "XGBClassifier": 80
+}
 
 
 results, deltas = predict(inputData)
