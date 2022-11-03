@@ -1,1 +1,1 @@
-### Diabetes Prediction Prject
+### Diabetes Prediction Project
