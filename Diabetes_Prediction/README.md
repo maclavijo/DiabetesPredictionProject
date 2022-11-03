@@ -10,7 +10,7 @@ You can follow me on [Github](https://github.com/maclavijo) and find this projec
 
 ### File structure
 .
-'''
+```
 ├── ...
 ├── diabetes.ipynb
 ├── diabetes_app.py
@@ -30,6 +30,6 @@ You can follow me on [Github](https://github.com/maclavijo) and find this projec
 │   ├──andomForestClassifier.bin
 │   ├──GBClassifier.bin
 │   └── ...
-'''
+```
 ### Project was deployed to streamlit cloud
 It can be found [here](https://maclavijo-projects-diabetes-predictiondiabetes-app-z713qp.streamlit.app/)
