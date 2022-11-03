@@ -91,13 +91,13 @@ def predict(inputdata):
 
     files = ['DecisionTreeClassifier.bin', 'LogisticRegression.bin', 'RandomForestClassifier.bin', 'XGBClassifier.bin']
     models = {}
-    path = '/app/projects/Diabetes_Prediction/'
+    #path = '/app/projects/Diabetes_Prediction/'
     for file in files:
         filename = file.split('.')[0]
         #print(os.listdir())
         
         with open(file, 'rb') as f:
-            models[path + filename] = pickle.load(f)        
+            models[filename] = pickle.load(f)        
 
     # Make predictions
     results = {}
