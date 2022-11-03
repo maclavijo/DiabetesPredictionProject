@@ -9,7 +9,6 @@ Disclaimer: This project is not intended to provide or replace any health or med
 You can follow me on [Github](https://github.com/maclavijo) and find this project [here](https://github.com/maclavijo/Projects/tree/main/Diabetes_Prediction) and give it a ⭐ if you may 💙.
 
 ### File structure
-.
 ```
 ├── ...
 ├── diabetes.ipynb
