@@ -88,13 +88,13 @@ def predict(inputdata):
     data.replace( genhlth, inplace=True )
 
     # get models from folder and load models to a dictionary
-    path = 'models/'
-    files = os.listdir(path)
+
+    files = ['DecisionTreeClassifier.bin', 'LogisticRegression.bin', 'RandomForestClassifier.bin', 'XGBClassifier.bin']
     models = {}
 
     for file in files:
         filename = file.split('.')[0]
-        with open('models/' + file, 'rb') as f:
+        with open(file, 'rb') as f:
             models[filename] = pickle.load(f)        
 
     # Make predictions
