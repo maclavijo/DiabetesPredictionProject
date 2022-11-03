@@ -91,7 +91,7 @@ def predict(inputdata):
 
     files = ['DecisionTreeClassifier.bin', 'LogisticRegression.bin', 'RandomForestClassifier.bin', 'XGBClassifier.bin']
     models = {}
-    path = 'Projects/Diabetes_Prediction/'
+    path = 'Diabetes_Prediction/'
     for file in files:
         filename = file.split('.')[0]
         #print(os.listdir())
