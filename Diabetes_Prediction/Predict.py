@@ -5,15 +5,11 @@ import json
 
 def predict(inputdata):
 
-
-
-    previous = {
-                "AdaBoostClassifier": 0,
-                "DecisionTreeClassifier": 0,
-                "LogisticRegression": 0,
-                "RandomForestClassifier": 0,
-                "XGBClassifier": 0
-                }
+    # Get previous data
+    prevfile = 'Previous.txt'
+    with open (prevfile, 'r') as f:
+        lines = f.read()
+    previous = dict(json.loads(lines))
 
     #Transform inputdata to an inputdataframe
     data = pd.DataFrame(inputdata, index=[1])
@@ -88,15 +84,13 @@ def predict(inputdata):
     data.replace( genhlth, inplace=True )
 
     # get models from folder and load models to a dictionary
-
-    files = ['DecisionTreeClassifier.bin', 'LogisticRegression.bin', 'RandomForestClassifier.bin', 'XGBClassifier.bin']
-    models = {}
     path = 'Diabetes_Prediction/'
+    files = os.listdir(path)
+    models = {}
+
     for file in files:
         filename = file.split('.')[0]
-        #print(os.listdir())
-        
-        with open(path + file, 'rb') as f:
+        with open('models/' + file, 'rb') as f:
             models[filename] = pickle.load(f)        
 
     # Make predictions
@@ -107,6 +101,11 @@ def predict(inputdata):
         yProbFinal = int(yProb_[0])
         results[name] = yProbFinal
         deltas[name] = yProbFinal - int(previous[name])
-        previous[name] = yProbFinal
+
+    json_object = json.dumps(results, indent=4)
+
+    # Rewrite previous measures
+    with open (path + prevfile, 'w') as f:
+        f.write(json_object)
 
     return results, deltas
