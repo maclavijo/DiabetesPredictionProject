@@ -9,24 +9,26 @@ Disclaimer: This project is not intended to provide or replace any health or med
 You can follow me on [Github](https://github.com/maclavijo) and find this project [here](https://github.com/maclavijo/Projects/tree/main/Diabetes_Prediction) and give it a ⭐ if you may 💙.
 
 ### File structure
-|   diabetes.ipynb<br>
-|   diabetes_app.py<br>
-|   Pipfile<br>
-|   Pipfile.lock<br>
-|   Predict.py<br>
-|   Previous.txt<br>
-|   README.md<br>
-|   train.py<br>
-|   utils.py<br>
-|<br>
-+---Datasets<br>
-|       diabetes_dataset.csv<br>
-|<br>
-+---models<br>
-|       DecisionTreeClassifier.bin<br>
-|       LogisticRegression.bin<br>
-|       RandomForestClassifier.bin<br>
-|       XGBClassifier.bin<br>
+.
+├── ...
+├── diabetes.ipynb
+├── diabetes_app.py
+├── Pipfile
+├── Pipfile.lock
+├── Predict.py
+├── Previous.tx
+├── README.md
+├── train.py
+├── utils.py
+├── Datasets                    # datasets
+│   ├── diabetes_dataset.csv
+│   └── ...
+├── models
+│   ├── DecisionTreeClassifier.bin
+│   ├──ogisticRegression.bin
+│   ├──andomForestClassifier.bin
+│   ├──GBClassifier.bin
+│   └── ...
 
 ### Project was deployed to streamlit cloud
 It can be found [here](https://maclavijo-projects-diabetes-predictiondiabetes-app-z713qp.streamlit.app/)
