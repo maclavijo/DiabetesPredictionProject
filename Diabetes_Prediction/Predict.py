@@ -97,7 +97,7 @@ def predict(inputdata):
         #print(os.listdir())
         
         with open(file, 'rb') as f:
-            models[path + filename] = pickle.load(f)        
+            models[filename] = pickle.load(f)        
 
     # Make predictions
     results = {}
