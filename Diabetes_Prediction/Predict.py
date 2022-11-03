@@ -6,8 +6,9 @@ import json
 def predict(inputdata):
 
     # Get previous data
+    path = 'Diabetes_Prediction/'
     prevfile = 'Previous.txt'
-    with open (prevfile, 'r') as f:
+    with open (path + prevfile, 'r') as f:
         lines = f.read()
     previous = dict(json.loads(lines))
 
@@ -84,13 +85,11 @@ def predict(inputdata):
     data.replace( genhlth, inplace=True )
 
     # get models from folder and load models to a dictionary
-    path = 'Diabetes_Prediction/'
-    files = os.listdir(path)
     models = {}
-
+    files = os.listdir(path + 'models/')
     for file in files:
         filename = file.split('.')[0]
-        with open('models/' + file, 'rb') as f:
+        with open(path + file, 'rb') as f:
             models[filename] = pickle.load(f)        
 
     # Make predictions
