@@ -1,0 +1,6 @@
+{
+    "DecisionTreeClassifier": 32,
+    "LogisticRegression": 25,
+    "RandomForestClassifier": 39,
+    "XGBClassifier": 35
+}

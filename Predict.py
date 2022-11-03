@@ -6,10 +6,8 @@ import json
 def predict(inputdata):
 
     # Get previous data
-    mainPath = 'Diabetes_Prediction/'
-    modPath = 'Diabetes_Prediction/models/'
     prevfile = 'Previous.txt'
-    with open (mainPath + prevfile, 'r') as f:
+    with open (prevfile, 'r') as f:
         lines = f.read()
     previous = dict(json.loads(lines))
 
@@ -87,10 +85,10 @@ def predict(inputdata):
 
     # get models from folder and load models to a dictionary
     models = {}
-    files = os.listdir(modPath)
+    files = os.listdir('models/')
     for file in files:
         filename = file.split('.')[0]
-        with open(modPath + file, 'rb') as f:
+        with open('models/' + file, 'rb') as f:
             models[filename] = pickle.load(f)        
 
     # Make predictions
@@ -105,7 +103,7 @@ def predict(inputdata):
     json_object = json.dumps(results, indent=4)
 
     # Rewrite previous measures
-    with open (mainPath + prevfile, 'w') as f:
+    with open (prevfile, 'w') as f:
         f.write(json_object)
 
     return results, deltas
