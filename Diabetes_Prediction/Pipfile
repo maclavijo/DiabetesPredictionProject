@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 streamlit = "*"
+scikit-learn = "*"
+xgboost = "*"
 
 [dev-packages]
 
