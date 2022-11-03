@@ -4,11 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-scikit-learn = "*"
-streamlit = "*"
-pandas = "*"
-xgboost = "*"
-imblearn = "*"
 
 [dev-packages]
 

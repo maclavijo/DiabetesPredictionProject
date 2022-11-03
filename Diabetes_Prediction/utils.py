@@ -1,63 +1,63 @@
 def InputData():
     patients = {
         'Patient # 1': {
-            'highbp': 'Yes',
-            'highchol': 'Yes',
-            'cholcheck': 'Yes',
-            'bmi': 22,
-            'smoker': 'No',
-            'stroke': 'No',
-            'heartdiseaseorattack': 'Yes',
-            'physactivity': 'No',
-            'hvyalcoholconsump': 'No',
-            'genhlth': 'Fair',
+            'highbp': 1,
+            'highchol': 1,
+            'cholcheck': 0,
+            'bmi': 27,
+            'smoker': 0,
+            'stroke': 1,
+            'heartdiseaseorattack': 1,
+            'physactivity': 0,
+            'hvyalcoholconsump': 1,
+            'genhlth': 2,
             'menthlth': 0,
-            'physhlth': 10,
-            'diffwalk': 'No',
-            'sex': 'Male',
-            'age': 52,
-            'education': 'High school graduate',
-            'income': 'less than $10,000'
+            'physhlth': 0,
+            'diffwalk': 1,
+            'sex': 0,
+            'age': 62,
+            'education': 5,
+            'income': 7
                     },
 
         'Patient # 2': {
-            'highbp': 'Yes',
-            'highchol': 'Yes',
-            'cholcheck': 'Yes',
-            'bmi': 26,
-            'smoker': 'No',
-            'stroke': 'No',
-            'heartdiseaseorattack': 'No',
-            'physactivity': 'Yes',
-            'hvyalcoholconsump': 'No',
-            'genhlth': 4,
+            'highbp': 0,
+            'highchol': 0,
+            'cholcheck': 0,
+            'bmi': 22,
+            'smoker': 1,
+            'stroke': 1,
+            'heartdiseaseorattack': 0,
+            'physactivity': 1,
+            'hvyalcoholconsump': 1,
+            'genhlth': 3,
             'menthlth': 0,
-            'physhlth': 0,
-            'diffwalk': 'No',
+            'physhlth': 10,
+            'diffwalk': 1,
             'sex': 0,
             'age': 52,
-            'education': 'Some college or technical school',
-            'income': '$15,000 to $20,000'
+            'education': 3,
+            'income': 0
             },
 
         'Myself': {
-            'highbp': 'No',
-            'highchol': 'No',
-            'cholcheck': 'No',
+            'highbp': 1,
+            'highchol': 1,
+            'cholcheck': 1,
             'bmi': 10,
-            'smoker': 'No',
-            'stroke': 'No',
-            'heartdiseaseorattack': 'No',
-            'physactivity': 'No',
-            'hvyalcoholconsump': 'No',
-            'genhlth':  'fair',
+            'smoker': 1,
+            'stroke': 1,
+            'heartdiseaseorattack': 1,
+            'physactivity': 1,
+            'hvyalcoholconsump': 1,
+            'genhlth':  0,
             'menthlth': 0,
             'physhlth': 0,
-            'diffwalk': 'No',
+            'diffwalk': 1,
             'sex': 'Male',
             'age': 20,
-            'education': 'Never attended school or only kindergarten',
-            'income': 'less than $10,000'
+            'education': 0,
+            'income': 0
             }
             }
     return patients
@@ -72,9 +72,9 @@ def Description():
                 f'person has diabetes {1} or not {0} and the features are numerical and categorical. This project compares the predicted probability of 5' \
                 f'different ML models Decision Trees, Logistic Regression, Random Forest, XGBoost and AdaBoostClassifier. It will also provide the change' \
                 f'in probability (delta) when the parameters vary w.r.t the previous inputed data.<br><br>' \
-                f'Note: If you don''t know you BMI you can calcuate it from here: https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html <br><br>'\
+                f' <strong>Note: If you don''t know you BMI you can calcuate it from here: https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html <br>'\
                 f'Disclaimer: This project is not intended to provide or replace any health or medical advise provided by health professionals. '\
-                f'It''s for self-educational purposes only. <br><br>' \
-                f'You can follow me on Github https://github.com/maclavijo and find this project here'
+                f'It''s for self-educational purposes only. <br>' \
+                f'You can follow me on Github https://github.com/maclavijo and find this project here https://github.com/maclavijo/Projects/tree/main/Diabetes_Prediction.</strong>'
 
     return description

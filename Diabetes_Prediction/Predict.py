@@ -4,24 +4,17 @@ import pickle
 import json
 
 def predict(inputdata):
-    
-    #print('############################')
-    #print(inputdata)
-    #print('############################')
+
+    # Get previous data
     prevfile = 'Previous.txt'
     with open (prevfile, 'r') as f:
         lines = f.read()
     previous = dict(json.loads(lines))
-    #print('**************************')
-#
-    #print('**************************')
-    #print(previous)
-#
-    #print('**************************')
+
     #Transform inputdata to an inputdataframe
     data = pd.DataFrame(inputdata, index=[1])
 
-    # Mappings
+    # Value Mappings
     sex = {'Male':0, 'Female':1}
 
     binary = {'Yes': 1, 'No': 0}
@@ -86,13 +79,10 @@ def predict(inputdata):
 
     # Replace values
     ageRange = getAgeRange(data.age.values)
-
-
     data.replace( binary | sex | education | income, inplace=True)
     data.age = ageRange
     data.replace( genhlth, inplace=True )
-    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-    print(data)
+
     # get models from folder and load models to a dictionary
     path = 'models/'
     files = os.listdir(path)
@@ -109,13 +99,12 @@ def predict(inputdata):
     for name, model in models.items():
         yProb_ = (model.predict_proba(data)[:,1]*100).round(0)
         yProbFinal = int(yProb_[0])
-        yPred_ = model.predict(data)
-        #print(f'{name:<22} : {yProbFinal} %')# = {yPred_}')
         results[name] = yProbFinal
         deltas[name] = yProbFinal - int(previous[name])
 
     json_object = json.dumps(results, indent=4)
 
+    # Rewrite previous measures
     with open (prevfile, 'w') as f:
         f.write(json_object)
 
