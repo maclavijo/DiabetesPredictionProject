@@ -95,7 +95,7 @@ def predict(inputdata):
     for file in files:
         filename = file.split('.')[0]
         print(os.listdir)
-        with open(file, 'rb') as f:
+        with open('/' +file, 'rb') as f:
             models[filename] = pickle.load(f)        
 
     # Make predictions
