@@ -47,9 +47,9 @@ Now you will be in the virtual environment and will be able to run the files loc
 
 ### To run the project locally from your machine
 
-From your console (in the correct work directory) and after the environment has been created (previous step) run the following command:
+From your console (in the correct work directory) and after the environment has been created (previous step):<br>
 
-You can run the train and predict files from here:<br>
+You can run the train and predict files from here<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python train.py<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python Predict.py<br>
 <br>
