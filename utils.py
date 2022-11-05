@@ -72,9 +72,9 @@ def Description():
                 f'person has diabetes {1} or not {0} and the features are numerical and categorical. This project compares the predicted probability of 5' \
                 f'different ML models Decision Trees, Logistic Regression, Random Forest, XGBoost and AdaBoostClassifier. It will also provide the change' \
                 f'in probability (delta) when the parameters vary w.r.t the previous inputed data.<br><br>' \
-                f' <strong>Note: If you don''t know you BMI you can calcuate it from here: https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html <br>'\
-                f'Disclaimer: This project is not intended to provide or replace any health or medical advise provided by health professionals. '\
-                f'It''s for self-educational purposes only. <br>' \
+                f' <strong>Note: If you don''t know you BMI you can calculate it from here: https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html <br>'\
+                f'Disclaimer: This project is not intended to give or replace any health or medical advice provided by health proffesionals. '\
+                f'It''s for educational purposes only. <br>' \
                 f'You can follow me on Github https://github.com/maclavijo and find this project here https://github.com/maclavijo/Projects/tree/main/Diabetes_Prediction.</strong>'
 
     return description

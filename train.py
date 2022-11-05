@@ -10,20 +10,18 @@ plt.switch_backend('agg')
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from sklearn.model_selection import train_test_split, cross_validate
-from sklearn.model_selection import StratifiedKFold, RepeatedStratifiedKFold, GridSearchCV
+from sklearn.model_selection import StratifiedKFold, GridSearchCV
 
-from sklearn.ensemble import HistGradientBoostingClassifier, AdaBoostClassifier,RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 
-from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 
 from sklearn.metrics import roc_auc_score, f1_score, roc_curve, RocCurveDisplay
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classification_report
 
-from sklearn.utils import class_weight
 from sklearn.pipeline import Pipeline
 
-import xgboost as xgb
 from xgboost import XGBClassifier
 
 import warnings
@@ -184,16 +182,13 @@ def getBestModelResults(model):
     
     return rtn
 
-# ### Load binary unbalanced data
-
+#### Load binary unbalanced data
 df = getData()
-print(df.head())
 
 ### EDA
-
-# #### Preparing and cleaning data
+##### Preparing and cleaning data
 df = cleanData(df)
-print(df.head())
+
 #### Checking Correlations
 sns.set_theme()
 corr_matrix = df.corr().abs()
@@ -211,6 +206,7 @@ _ = plt.show()
 
 print(corr_matrix.sort_values(ascending=False))
 
+### Dropping parameters with lower correlation
 df.drop(columns=['nodocbccost', 'fruits', 'anyhealthcare', 'veggies'], inplace=True)
 
 #### The target value is heavily imbalanced.  No Diabetes- 194377, Diabetes- 35097.
@@ -442,7 +438,7 @@ modelXGB = Pipeline([("classifier", XGBClassifier(n_estimators = 10,
                                                   min_child_weight = 20,
                                                   reg_lambda = 8,
                                                   random_state=randomState, 
-                                                  tree_method='gpu_hist',
+                                                  #tree_method='gpu_hist',
                                                   scale_pos_weight=imbalanceRatio                                                  
                                                  ))
                     ])
@@ -459,69 +455,8 @@ results.update(getMeasures(modelXGB))
 #### XGBoost results:
 printResults(results)
 
-
-#### AdaBoost Classifier
-print('AdaBoost Classifier')
-
-model_AB = Pipeline([("classifier", AdaBoostClassifier(base_estimator = DecisionTreeClassifier(),
-                                                       random_state=randomState)
-                      )])
-
-param_grid = {
-    'classifier__learning_rate' : (0.1, 0.5, 1, 2),
-    'classifier__base_estimator__class_weight': [None, 'balanced'],
-    'classifier__base_estimator__max_depth': [1, 3, 5],
-    'classifier__base_estimator__max_leaf_nodes': [1, 3, 5],
-    
-}
-
-scoring = {"auc": "roc_auc", "f1_weighted": "f1_weighted"}
-
-model_grid_search_AB = GridSearchCV(model_AB,
-                                 param_grid=param_grid,
-                                 scoring=scoring,
-                                 n_jobs=-1,
-                                 cv=innerCV,
-                                 return_train_score=True,
-                                 verbose=0,                                 
-                                 refit=False)
-
-_ = model_grid_search_AB.fit(dfTrainFull, yTrainFull)
-
-paramsAB = ['param_classifier__learning_rate',
-            'param_classifier__base_estimator__class_weight',
-            'param_classifier__base_estimator__max_depth',
-            'param_classifier__base_estimator__max_leaf_nodes'
-           ]
-
-getResults(model_grid_search_AB, paramsAB)
-
-# #### Selecting best parameters
-# Choosing max_depth = 3, max_leaf_nodes= 3  and learning_rate = 0.8 and class_weight = None.
-
-modelAB = Pipeline([("classifier", AdaBoostClassifier(
-    base_estimator = DecisionTreeClassifier(class_weight = 'balanced',
-                                            max_depth = 3,
-                                            max_leaf_nodes = 5,
-                                           ), learning_rate = 0.5, random_state=randomState))
-                   ])
-
-_ = modelAB.fit(dfTrainFull, yTrainFull)
-
-# Outer cross-validation(for testing the tuned model)
-results = {}
-results = getBestModelResults(modelAB)
-
-##### Curves and error measures
-results.update(getMeasures(modelAB))
-
-
-#### AdaBoostClassifier results:
-printResults(results)
-
-
 ### Comparing models
-models = [modelDT, modelLR, modelRF, modelXGB, modelAB]
+models = [modelDT, modelLR, modelRF, modelXGB]
 
 fig, ax = plt.subplots(figsize=(15, 10))
 delta = 0
@@ -551,7 +486,7 @@ for model in models:
 if not os.path.exists('models'):
     os.mkdir('models')
 
-models = [modelDT, modelLR, modelRF, modelXGB, modelAB]
+models = [modelDT, modelLR, modelRF, modelXGB]
 for model in models:
     modelName = type(model.named_steps.classifier).__name__
     print(f'Saving pickle file for {modelName}')

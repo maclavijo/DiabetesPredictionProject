@@ -1,44 +1,82 @@
-### Diabetes Prediction Project
+## Diabetes Prediction Project
+
+### Problem description
 
 This project is based on the [Kaggle dateset](https://www.kaggle.com/code/alexteboul/diabetes-health-indicators-dataset-notebook/notebook). The dataset is a smaller and cleaner version of the dataset published by the CDC - Behavioral Risk Factor Surveillance System in 2015 which can be found [here](https://www.cdc.gov/brfss/annual_data/annual_2015.html).
 
-The target variable is a binary value that represets whether the person has diabetes 1 or not 0 and the features are numerical and categorical. This project compares the predicted probability of 5different ML models Decision Trees, Logistic Regression, Random Forest, XGBoost and AdaBoostClassifier. It will also provide the changein probability (delta) when the parameters vary w.r.t the previous inputed data.
+Our mission will be to predict the probability of someone having diabetes based on different features (which are the responses to the survey).
+The target variable is a binary value that represets whether the person has diabetes 1 or not 0 and the features are numerical and categorical. This project calculates and compares the predicted probability of 5 different ML models: Decision Trees, Logistic Regression, Random Forest, XGBoost and AdaBoostClassifier. It will also provide the changein probability (delta) when the parameters vary w.r.t the previous inputed data, this will allow to see how changeson the different features could affect the predicted probability.
 
 Note: If you dont know you BMI you can calcuate it from [here](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html).
 Disclaimer: This project is not intended to provide or replace any health or medical advise provided by health professionals. Its for self-educational purposes only.
 You can follow me on [Github](https://github.com/maclavijo) and find this project [here](https://github.com/maclavijo/Projects/tree/main/Diabetes_Prediction) and give it a ⭐ if you may 💙.
 
+
 ### File structure
 ```
 ├── ...
 ├── diabetes.ipynb
-├── DiabetesPredictionProject
+├── diabetes_app.py
+├── Dockerfile
 ├── Pipfile
 ├── Pipfile.lock
 ├── Predict.py
-├── Previous.tx
+├── Previous.txt
 ├── README.md
 ├── train.py
 ├── utils.py
-├── Datasets                    # datasets
+├── Datasets
 │   ├── diabetes_dataset.csv
 │   └── ...
 ├── models
 │   ├── DecisionTreeClassifier.bin
-│   ├──ogisticRegression.bin
-│   ├──andomForestClassifier.bin
-│   ├──GBClassifier.bin
+│   ├── LogisticRegression.bin
+│   ├── RandomForestClassifier.bin
+│   ├── XGBClassifier.bin
 │   └── ...
 ```
-### Project was deployed to streamlit cloud
-It can be found and run from [here](https://maclavijo-diabetespredic-diabetes-predictiondiabetes-app-9wqx5h.streamlit.app/)
 
-### To run it locally
-1. From your console do the following:
-- Run command: pipenv install
-- Run command: streamlit run DiabetesPredictionProject
-- You can now view your Streamlit app in your browser. Local URL[url](http://localhost:8501) or Network URL[url](http://10.97.0.6:8501)
-2. Using docker.
-- Run command: docker pull supermac789/diabetes_app_streamlit:latest
-. Access the app here [http://localhost:8501](http://localhost:8501)
+### Dependency and enviroment management
+
+Pipfile and Pipfile.lock files are provided. Copy the content of this folder to your machine. Then from the terminal of your IDE of preference (in the correct work directory) the following:
+
+- pipenv install
+- pipev shell
+
+Now you will be in the virtual environment and will be able to run the files locally
+
+### To run the project locally from your machine
+
+From your console (in the correct work directory) and after the environment has been created (previous step) run the following command:
+
+streamlit run diabetes_app.py
+
+You can now view your Streamlit app in your browser.
+Local URL[http://localhost:8501](http://localhost:8501) or Network URL[http://10.97.0.6:8501](http://10.97.0.6:8501)
+
+
+### Containerization
+
+Dockerfile has been provided. To create and run the image, from your IDE terminal do the following (within the work directory):
+
+1. First option: Create and run the app yourself.
+
+Create:
+- docker build -t diabetes_app_streamlit .
+
+Run:
+- docker run -p 8501:8501 diabetes_app_streamlit
+
+You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)
+
+2. Second option: To run it using docker hub repository:
+
+- Download image from hub run command:  docker pull supermac789/diabetes_app_streamlit:latest
+- Run the command from your terminal: 
+
+You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)
+
+### Cloud deployment - Streamlit cloud
+
+The app can be found and run from [https://maclavijo-diabetespredic-diabetes-predictiondiabetes-app-9wqx5h.streamlit.app/](https://maclavijo-diabetespredic-diabetes-predictiondiabetes-app-9wqx5h.streamlit.app/).
 
