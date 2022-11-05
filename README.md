@@ -40,8 +40,8 @@ You can follow me on [Github](https://github.com/maclavijo) and find this projec
 
 Pipfile and Pipfile.lock files are provided. Copy the content of this folder to your machine. Then from the terminal of your IDE of preference (in the correct work directory) the following:
 
-&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;pipenv install<br>
-&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;pipev shell
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pipenv install<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pipev shell
 
 Now you will be in the virtual environment and will be able to run the files locally
 
@@ -61,17 +61,17 @@ Dockerfile has been provided. To create and run the image, from your IDE termina
 
 1. First option: Create and run the app yourself.<br>
 
-&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;Create:<br>
-&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;docker build -t diabetes_app_streamlit .<br>
-&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;Run:<br>
-&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;docker run -p 8501:8501 diabetes_app_streamlit<br>
-&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker build -t diabetes_app_streamlit .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Run:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker run -p 8501:8501 diabetes_app_streamlit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)<br>
 
 2. Second option: To run it using docker hub repository:<br>
 
-&nbsp;&nbsp;&nbsp;Download image from hub run command:  docker pull supermac789/diabetes_app_streamlit:latest
-&nbsp;&nbsp;&nbsp;Run the command from your terminal: 
-&nbsp;&nbsp;&nbsp;You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)
+&nbsp;&nbsp;&nbsp;Download image from hub run command:  docker pull supermac789/diabetes_app_streamlit:latest<br>
+&nbsp;&nbsp;&nbsp;Run the command from your terminal:<br>
+&nbsp;&nbsp;&nbsp;You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)<br>
 
 ### Cloud deployment - Streamlit cloud
 
