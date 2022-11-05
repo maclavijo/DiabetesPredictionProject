@@ -77,6 +77,7 @@ You can now access the Streamlit app in your web browser: Local URL: [http://loc
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download image from hub run command:  docker pull supermac789/diabetes_app_streamlit:latest<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Run the command from your terminal:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker run -p 8501:8501 supermac789/diabetes_app_streamlit:latest<br>
 
 You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)<br>
 
