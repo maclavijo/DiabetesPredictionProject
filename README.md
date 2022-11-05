@@ -52,6 +52,7 @@ From your console (in the correct work directory) and after the environment has 
 You can run the train and predict files from here<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python train.py<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python Predict.py<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or the jupyter notebook from anaconda: diabetes.ipynb<br>
 <br>
 or you can run the streamlit app<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;streamlit run diabetes_app.py
