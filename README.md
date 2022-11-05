@@ -44,16 +44,16 @@ Pipfile and Pipfile.lock files are provided. Copy the content of this folder to 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pipev shell
 
 Now you will be in the virtual environment and will be able to run the files locally<br>
-You can run the train and predict files from here:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python train.py<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python Predict.py<br>
-
 
 ### To run the project locally from your machine
 
 From your console (in the correct work directory) and after the environment has been created (previous step) run the following command:
 
+You can run the train and predict files from here:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python train.py<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python Predict.py<br>
+<br>
+or you can run the streamlit app<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;streamlit run diabetes_app.py
 
 You can now view your Streamlit app in your browser.
