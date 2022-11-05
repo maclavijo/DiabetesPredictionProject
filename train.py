@@ -4,7 +4,9 @@ import pickle
 import pandas as pd
 import numpy as np
 import seaborn as sns
+from itertools import product
 import matplotlib.pyplot as plt
+sns.set_theme()
 plt.switch_backend('agg')
 
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -24,9 +26,6 @@ from sklearn.pipeline import Pipeline
 
 from xgboost import XGBClassifier
 
-import warnings
-warnings.filterwarnings("ignore")
-
 # Variables
 
 randomState = 42
@@ -37,7 +36,7 @@ innerCV = StratifiedKFold(n_splits=5, shuffle=True, random_state=randomState)
 outerCV = StratifiedKFold(n_splits=3, shuffle=True, random_state=randomState)
 scoring = {"auc": "roc_auc", "f1_weighted": "f1_weighted"}
 
-# ### Helper functions
+# Helper functions
 
 def getData(url = url):
 
@@ -189,6 +188,23 @@ df = getData()
 ##### Preparing and cleaning data
 df = cleanData(df)
 
+# Checking feature and target values.
+diabetes0 = df[df.diabetes==0]
+diabetes1 = df[df.diabetes==1]
+columns = df.columns
+idxs = list(product(range(0,11), range(0,2)))
+
+fig, axs = plt.subplots(11,2, figsize=(12, 30))
+for col,ax in zip(columns, axs.ravel()):
+    ax.hist(diabetes0[col], stacked=True, label='Diabetes')
+    ax.hist(diabetes1[col], stacked=True, label='No Diabetes')
+    ax.legend(prop={'size': 10})
+    ax.set_title(col)
+
+fig.tight_layout()
+plt.show()  
+
+
 #### Checking Correlations
 sns.set_theme()
 corr_matrix = df.corr().abs()
@@ -196,8 +212,6 @@ plt.figure(figsize=(17,17))
 
 _ = sns.heatmap(corr_matrix, cmap="Blues", annot=True)
 
-
-sns.set_theme()
 dfMatrix = df.drop(columns='diabetes')
 corr_matrix = dfMatrix.corrwith(df.diabetes).abs()
 plt.figure(figsize=(14,5))
@@ -215,7 +229,7 @@ _= df.hist(figsize=(16,16))
 
 dfTrainFull, yTrainFull, dfTrain, yTrain, dfVal, yVal, dfTest, yTest = splitData(df)
 
-# #### Preprocessing
+# Preprocessing
 # This part will be used for the Logistic Regression classifier only
 
 categoricalCols = ['highbp', 'highchol', 'cholcheck','smoker','stroke',
@@ -234,10 +248,11 @@ from sklearn.compose import ColumnTransformer
 preprocessor = ColumnTransformer([
     ('one-hot-encoder', catPreprocessor, categoricalCols)],remainder="passthrough")
 
+##################
 ### ML Models
+##################
 
 #### DecisionTreeClassifier -  Will use nested CrossValidation
-# inner cross-validation(for Hyperparameter tuning)
 
 print('DecisionTree Classifier')
 
@@ -267,7 +282,7 @@ paramsDT = ["param_classifier__max_depth",
 
 getResults(model_grid_search_DT, paramsDT)
 
-# #### Selecting best parameters
+# # Selecting best parameters
 # We will choose max_depth=7, max_leaf_nodes=20 and max_features=15. Reaching a compromise between F1 Score and AUC.
 
 bestParamsDT = ['max_depth=7', 'max_leaf_nodes=20', 'max_features=5']
@@ -285,10 +300,10 @@ _ = modelDT.fit(dfTrainFull, yTrainFull)
 results = {}
 results = getBestModelResults(modelDT)
 
-# #### Curves and error measures
+# # Curves and error measures
 results.update(getMeasures(modelDT))
 
-# ### DecisionTreeClassifier results:
+#  DecisionTreeClassifier results:
 printResults(results)
 
 
@@ -366,7 +381,7 @@ paramsRF = ["param_classifier__max_depth",
 
 getResults(model_grid_search_RF, paramsRF)
 
-# #### Selecting best parameters
+# # Selecting best parameters
 # Choosing max_depth = 10, max_leaf_nodes=30 and max_features=5.
 modelRF = Pipeline([("classifier", RandomForestClassifier(n_estimators=10,
                                                           max_depth = 10,
@@ -430,7 +445,7 @@ paramsXGB = ["param_classifier__max_depth",
 
 getResults(model_grid_search_XGB, paramsXGB)
 
-# #### Selecting best parameters
+# # Selecting best parameters
 # Choosing max_depth = 8, learning_rate = 0.5, min_child_weight = 20 and reg_lambda = 8,. It's a good compromise between a good AUC and F1 Score.
 modelXGB = Pipeline([("classifier", XGBClassifier(n_estimators = 10,
                                                   max_depth = 8,
@@ -449,7 +464,7 @@ _ = modelXGB.fit(dfTrainFull, yTrainFull)
 results = {}
 results = getBestModelResults(modelXGB)
 
-# #### Curves and measures of error
+# # Curves and measures of error
 results.update(getMeasures(modelXGB))
 
 #### XGBoost results:
@@ -480,7 +495,7 @@ for model in models:
     delta += 0.043  
 
 
-# #### In this case the best model are AdaBoostClassifier, XGBoost and Logistc regression.
+## In this case the best model are XGBoost and Logistc regression.
 
 ### Saving Models with Pickle
 if not os.path.exists('models'):
