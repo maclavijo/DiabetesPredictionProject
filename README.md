@@ -82,4 +82,4 @@ You can now access the Streamlit app in your web browser: Local URL: [http://loc
 
 ### Cloud deployment - Streamlit cloud
 
-The app can be found and run from [https://maclavijo-diabetespredic-diabetes-predictiondiabetes-app-9wqx5h.streamlit.app/](https://maclavijo-diabetespredic-diabetes-predictiondiabetes-app-9wqx5h.streamlit.app/).
+The app can be found and run from [https://maclavijo-diabetespredictionproject-diabetes-app-7rf1nc.streamlit.app/](https://maclavijo-diabetespredictionproject-diabetes-app-7rf1nc.streamlit.app/).
