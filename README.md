@@ -58,7 +58,7 @@ or you can run the streamlit app<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;streamlit run diabetes_app.py
 
 You can now view your Streamlit app in your browser.
-Local URL[http://localhost:8501](http://localhost:8501) or Network URL[http://10.97.0.6:8501](http://10.97.0.6:8501)
+Local [http://localhost:8501](http://localhost:8501) or Network [http://10.97.0.6:8501](http://10.97.0.6:8501)
 
 
 ### Containerization
@@ -72,7 +72,7 @@ Dockerfile has been provided. To create and run the image, from your IDE termina
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Run image:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker run -p 8501:8501 diabetes_app_streamlit<br>
 
-You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)<br>
+You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](http://0.0.0.0:8501)<br>
 
 2. Second option: To run it using docker hub repository:<br>
 
@@ -81,7 +81,7 @@ You can now access the Streamlit app in your web browser: Local URL: [http://loc
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Run the command from your terminal:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker run -p 8501:8501 supermac789/diabetes_app_streamlit:latest<br>
 
-You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](URL: http://0.0.0.0:8501)<br>
+You can now access the Streamlit app in your web browser: Local URL: [http://localhost:8501](http://localhost:8501) or from URL: [http://0.0.0.0:8501](http://0.0.0.0:8501)<br>
 
 ### Cloud deployment - Streamlit cloud
 
