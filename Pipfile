@@ -5,8 +5,10 @@ name = "pypi"
 
 [packages]
 streamlit = "*"
-scikit-learn = "*"
+scikit-learn = "==1.0.2"
 xgboost = "*"
+matplotlib = "*"
+seaborn = "*"
 
 [dev-packages]
 

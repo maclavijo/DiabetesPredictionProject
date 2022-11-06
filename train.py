@@ -2,11 +2,8 @@ import os
 import time
 import pickle
 import pandas as pd
-import numpy as np
-import seaborn as sns
 from itertools import product
 import matplotlib.pyplot as plt
-sns.set_theme()
 plt.switch_backend('agg')
 
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -206,11 +203,6 @@ plt.show()
 
 
 #### Checking Correlations
-sns.set_theme()
-corr_matrix = df.corr().abs()
-plt.figure(figsize=(17,17))
-
-_ = sns.heatmap(corr_matrix, cmap="Blues", annot=True)
 
 dfMatrix = df.drop(columns='diabetes')
 corr_matrix = dfMatrix.corrwith(df.diabetes).abs()
