@@ -79,10 +79,6 @@ with st.form(key='columns_in_form'):
         smoker = st.selectbox('Have you smoked at least 100 cigarettes in your entire life', ['Yes', 'No'], index=defaultInput['smoker'])
         excercise = st.selectbox('Any physical activity or exercise during the past 30 days (not including work)?', ['Yes', 'No'], index=defaultInput['physactivity'])
         alcohol = st.selectbox('Are you a heavy drinkers? Adult men: 14+   -   Adult woman: 7+   (drinks/week)', ['Yes', 'No'], index=defaultInput['hvyalcoholconsump'])
-        #coffee_roast_val4 = st.selectbox('Coffee roast4', ['Light', 'Medium', 'Dark'])
-        #milk_val4 = st.select_slider('Milk intensity4', ['None', 'Low', 'Medium', 'High'])
-        #owncup_val4 = st.checkbox('Bring own cup4')
-
 
     submitButton = st.form_submit_button(label = 'Calculate')
 

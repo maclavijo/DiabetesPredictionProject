@@ -193,8 +193,8 @@ idxs = list(product(range(0,11), range(0,2)))
 
 fig, axs = plt.subplots(11,2, figsize=(12, 30))
 for col,ax in zip(columns, axs.ravel()):
-    ax.hist(diabetes0[col], stacked=True, label='Diabetes')
-    ax.hist(diabetes1[col], stacked=True, label='No Diabetes')
+    ax.hist(diabetes0[col], stacked=True, label='No Diabetes')
+    ax.hist(diabetes1[col], stacked=True, label='Diabetes')
     ax.legend(prop={'size': 10})
     ax.set_title(col)
 
